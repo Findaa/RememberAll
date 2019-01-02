@@ -1,2 +1,1 @@
-# RememberAll
-University project for mobile technologies.
+no siema
