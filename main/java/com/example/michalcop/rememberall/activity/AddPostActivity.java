@@ -36,41 +36,41 @@ public class AddPostActivity extends AppCompatActivity {
     //Create button animation.
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.4F);
 
-
+    //Override onCreate method from activity. Set view model to make room database changes
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_post);
-        postViewModel = ViewModelProviders.of(this).get(PostViewModel.class);
+        super.onCreate(savedInstanceState);                 //push bundle into super class
+        setContentView(R.layout.activity_add_post);         
+        postViewModel = ViewModelProviders.of(this).get(PostViewModel.class);   //use built in ViewModel class to apply ours
 
     }
-
+    //Onclick method that allows us to add new posts
     public void submitPost(View v){
         Intent intent = new Intent(this, MainActivity.class);
 
         v.startAnimation(buttonClick);
-        v.getBackground().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);
+        v.getBackground().setColorFilter(0x77000000, PorterDuff.Mode.SRC_ATOP);     //Two button animationns
 
         EditText titleElement   = findViewById(R.id.editTitle);
         EditText contentElement = findViewById(R.id.editContent);
-        EditText dateForElement = findViewById(R.id.editDateFor);
+        EditText dateForElement = findViewById(R.id.editDateFor);                   //Assign xml elements to java objects
 
         String title   = titleElement.getText().toString();
         String content = contentElement.getText().toString();
-        String dateFor = dateForElement.getText().toString();
+        String dateFor = dateForElement.getText().toString();                      //Change type of objects to String
 
         intent.putExtra(EXTRA_TITLE, title);
         intent.putExtra(EXTRA_CONTENT, content);
-        intent.putExtra(EXTRA_DATEFOR, dateFor);
+        intent.putExtra(EXTRA_DATEFOR, dateFor);                                    //Send new object to main activity and restart it
 
         try {
-            postViewModel.savePost(new Post(title, content, formatDate(new Date()), dateFor));
+            postViewModel.savePost(new Post(title, content, formatDate(new Date()), dateFor));  //The only place we can get NPE error
         } catch (NullPointerException npe){
             System.out.println("NPE on Post element");
             postViewModel.savePost(new Post("fail", "This post has been failed in assigning", "fail", "fail"));
         }
 
-        finishActivity(R.layout.activity_main);
+        finishActivity(R.layout.activity_main);                                                 //Restarting activity is necessary to make animation works separately for each delete button
         startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
     }
 
@@ -79,7 +79,7 @@ public class AddPostActivity extends AppCompatActivity {
     }
 
     //Inner view.
-    public static class TimePickerFragment extends DialogFragment
+    public static class TimePickerFragment extends DialogFragment               //TO DO
             implements TimePickerDialog.OnTimeSetListener {
 
         public TimePickerFragment(){
