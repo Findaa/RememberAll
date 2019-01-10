@@ -27,4 +27,7 @@ public interface PostDao {
 
     @Query("SELECT * FROM Post")
     LiveData<List<Post>> findAll();
+
+    @Query("delete from Post")
+    void deleteAll();
 }
