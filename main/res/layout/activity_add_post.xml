@@ -6,17 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".activity.AddPostActivity">
 
-    <EditText
+    <TextView
         android:id="@+id/editDateFor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_width="106dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="180dp"
         android:ems="10"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="right"
+        android:textAlignment="gravity"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editContent"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/editContent" />
+
+    <TextView
+        android:id="@+id/editTimeFor"
+        android:layout_width="106dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="180dp"
+        android:layout_marginEnd="85dp"
+        android:ems="10"
+        android:gravity="left"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editContent" />
 
     <EditText
         android:id="@+id/editContent"
@@ -25,7 +36,7 @@
         android:layout_marginTop="12dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Post content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTitle" />
@@ -37,7 +48,7 @@
         android:layout_marginTop="31dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Post title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -46,12 +57,32 @@
         android:id="@+id/submitPost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="11dp"
-        android:text="Button"
+        android:layout_marginTop="104dp"
         android:onClick="submitPost"
+        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editDateFor" />
+        app:layout_constraintTop_toBottomOf="@+id/editContent" />
+
+    <Button
+        android:id="@+id/pickDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="50dp"
+        android:text="Pick Date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editContent" />
+
+    <Button
+        android:id="@+id/pickTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="80dp"
+        android:text="Pick Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editContent" />
 
 
 </android.support.constraint.ConstraintLayout>
