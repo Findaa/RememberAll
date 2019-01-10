@@ -31,22 +31,22 @@ import java.util.Date;
  * Activity that allows us to add custom elements to room database.
  */
 public class AddPostActivity extends AppCompatActivity implements View.OnClickListener {
-    
+
     //Constants for intent names.
     public static final String EXTRA_TITLE = "com.findaa.TITLE";
     public static final String EXTRA_CONTENT = "com.findaa.CONTENT";
     public static final String EXTRA_DATEFOR = "com.findaa.DATEFOR";
-    
+
     //Inject view model.
     PostViewModel postViewModel;
-    
+
     //Create button animation.
     private AlphaAnimation buttonClick = new AlphaAnimation(1F, 0.4F);
 
     //create variables
     Button pickDate, pickTime;
     int mYear, mMonth, mDay, mHour, mMinute;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,10 +73,10 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                     (view, year, monthOfYear, dayOfMonth) ->
                             dateTxt.setText(
                                     dayOfMonth + "-" + (monthOfYear + 1) + "-" + year), mYear, mMonth, mDay);
-            
+
             datePickerDialog.show();
         }
-        
+
         if (v == pickTime) {
             final Calendar c = Calendar.getInstance();
             mHour = c.get(Calendar.HOUR_OF_DAY);
@@ -90,9 +90,9 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                                     timeTxt.setText(hourOfDay + ":" + minute);
                                 }
                             }, mHour, mMinute, false);
-            
+
             timePickerDialog.show();
-            
+
         } else {
             System.out.println("Error onClickListener");
         }
