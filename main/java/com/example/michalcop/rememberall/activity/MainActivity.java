@@ -1,7 +1,9 @@
 package com.example.michalcop.rememberall.activity;
 
 import android.app.ActivityOptions;
+import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.support.v7.app.AppCompatActivity;
@@ -77,8 +79,23 @@ public class MainActivity extends AppCompatActivity implements PostsAdapter.OnDe
             this.finishActivity(R.layout.activity_main); //It is required to restart MainActivity to rebind items to RecyclerView.
             startActivity(intent, ActivityOptions.makeSceneTransitionAnimation(this).toBundle());
             return true;
-        } else
+        } else if (item.getItemId() == R.id.deleteAll){
+                onBackPressed();
+            return true;
+        }
+        else
             return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed(){
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .setTitle("Delete Everything")
+                .setMessage("Are you sure you want to wipe this?")
+                .setPositiveButton("Yes", (dialog, which) -> postViewModel.deleteAll())
+                .setNegativeButton("No", null)
+                .show();
     }
 
     //A simple listener method that is implemented in that activity.
