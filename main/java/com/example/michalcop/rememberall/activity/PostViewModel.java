@@ -34,10 +34,7 @@ public class PostViewModel extends AndroidViewModel {
         return postDao.findAll();
     }
 
-
-    void savePost(Post post) {
-        executorService.execute(() -> postDao.save(post));
-    }
+    void savePost(Post post) { executorService.execute(() -> postDao.save(post)); }
 
     void deletePost(Post post) {
         executorService.execute(() -> postDao.delete(post));
