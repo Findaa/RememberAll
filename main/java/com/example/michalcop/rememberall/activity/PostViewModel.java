@@ -42,4 +42,6 @@ public class PostViewModel extends AndroidViewModel {
     void deletePost(Post post) {
         executorService.execute(() -> postDao.delete(post));
     }
+
+    void deleteAll() {executorService.execute(() -> postDao.deleteAll());}
 }
